@@ -1,0 +1,14 @@
+use project;
+drop table CustomersDetails;
+create table CustomersDetails(CustomerID varchar(20) primary key,CustomerName varchar(20),MobileNum int(10),Address varchar(50));
+alter table CustomersDetails add column Email varchar(50);
+alter table CustomersDetails add column lat varchar(50);
+alter table CustomersDetails add column lan varchar(50); 
+alter table CustomersDetails modify column MobileNum varchar(15);
+delete from CustomersDetails where CustomerID="CustomerID";
+select * from CustomersDetails;
+insert into CustomersDetails(CustomerId,CustomerName,MobileNum,Address,Email) values('17bd1a057j',"Gayathri",9491729009,"Chaithanyapuri","rlgayathri99@gmail.com");
+SET SQL_SAFE_UPDATES=0;
+delete from CustomersDetails where CustomerID="";
+alter table CustomersDetails drop column lat;
+alter table CustomersDetails drop column lan;
