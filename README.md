@@ -15,17 +15,29 @@ General Information:
 The portal decreases the ratio of orders missed by delivery boys due to the lack of proper communication between them and customers. Customers are allowed to choose the date of delivery and availability slot, thereby ensuring that proper communication is maintained. Depending on the response from the customers, the algorithm of the portal clusters the orders based on distance from the centre and radius of area to be covered, and generates the shortest routes possible which are given to delivery boys to complete their orders in the best timeframe possible.
   
 Setup:
+
 •	Xampp and MySql are needed for accessing the server and the database. 
 
+
+
+
   Getting Started:
+	
 •	Clone the project and store it in htdocs of xampp folder with a folder name (ex:timely).
+
 •	Create the database tables in MySQL from database folder of the downloaded project.
+
+
 •	Start apache and MySQL in the Xampp control.
+
 •	Open the web browser and enter in url as  localhost/project_name/Login_php
 (Ex: localhost/timely/Login.php)
+
 •	For logging into the portal enter any random data.
 •	The home page would be shown through which all the features of the portal could be accessed.
+
 •	The features are:
+
 1)	Home: It would contain the current delivery details.
 2)	Resources: Details about the number of delivery boys and vehicle available.
 3)	Contact customers(Mail, WhatsApp and SMS)
