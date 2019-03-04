@@ -1,7 +1,12 @@
 <?php
 
-//we are hard coding addresses due to non availability of a billable account. 
-//A billable account would help us access more functions from the API's. 
+
+/**************************************************************************************
+WE ARE HARD-CODING THE PROJECT DUR TO NON-AVAILABILITY OF BILLABLE ACCOUNT OF GOOGLE API
+A billable account would help us access more functions from the API's.
+***************************************************************************************/
+
+ 
 $addresses=array("3-4-428/A,1st floor near ymca circle,narayanguda,hyderabad,500029",
     "14-5-329/1,ShahInayath Gunj,BegumBazar,Hyderabad,500012",
     "14-2-189,godavari colony,ShahInayath Gunj,Begum Bazar,Hyderabad,500012",
@@ -20,14 +25,17 @@ $arrlength=count($addresses);
 $latitude=array();
 $longitude=array();
 
+/******************************************************************************
+GETTING THE LATITUDES AND LONGITUDES OF ADDRESSES THROUGH GOOGLE API
+*******************************************************************************/
 
 for($i=0; $i<$arrlength;$i++)
 {
     $address=$addresses[$i];
     $address = str_replace(" ", "+", $address);
     $region = "INDIA";
-    
-    $json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$address&sensor=false&region=$region&key=AIzaSyAL2xAB85A2xzJSwpfzl9rg1bJ0mbtFeco");
+    //
+    $json = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$address&sensor=false&region=$region&key=AIzaSyDdrVcu7KI3QqpQlfab1HETqxqDXVriVm0");
     $json = json_decode($json);
     $lat = $json->{'results'}['0']->{'geometry'}->{'location'}->{'lat'};;
     $long = $json->{'results'}['0']->{'geometry'}->{'location'}->{'lng'};
@@ -145,11 +153,14 @@ var marker1=new google.maps.Marker({
 });
 
 
-//Getting latitude and longitude from the php code
+/**********************************************************************
+OBTAINING THE LATITUDE AND LONGITUDE ARRAY FROM PHP CODE
+**********************************************************************/
 var latitude=<?php echo json_encode($latitude, JSON_PRETTY_PRINT) ?>;
 var longitude=<?php echo json_encode($longitude, JSON_PRETTY_PRINT) ?>;
 var deliveryCenter="<?php echo $deliveryCenter ?>";
 console.log(deliveryCenter);
+    
 //Creating an object array of co-ordinates
 var locations=[];
 for(var i=0;i<latitude.length;i++)
@@ -157,9 +168,12 @@ for(var i=0;i<latitude.length;i++)
 	locations.push({lat: latitude[i],lng: longitude[i]});
 }
 
-    // Add some markers to the map.
-    // Note: The code uses the JavaScript Array.prototype.map() method to
-    // create an array of markers based on a given "locations" array.
+/******************************************************************
+Add some markers to the map.
+Note: The code uses the JavaScript Array.prototype.map() method to
+create an array of markers based on a given "locations" array.
+**************************************************************************/
+     
     var markers = locations.map(function(location) {
       return new google.maps.Marker({
         position: location,
@@ -179,25 +193,24 @@ for(var i=0;i<latitude.length;i++)
         lngg = results[0].geometry.location.lng();
        } 
     }); 
-    // Add a marker clusterer to manage the markers.
+/**************************************************************************
+Add a marker clusterer to manage the markers.
+***************************************************************************/
     
     var mcOptions = {gridSize: 50, maxZoom: 12,imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'};
     var markerCluster = new MarkerClusterer(map, markers,mcOptions);
-
-
     google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
-        var content = '';
+    var content = '';
 
         // Convert lat/long from cluster object to a usable MVCObject
         var info = new google.maps.MVCObject;
         info.set('position', cluster.center_);
 
-        //----
+        
         //Get markers
         var markers = cluster.getMarkers();
 
         var titles = "";
-        //Get all the titles
         var way =[];
         
         var allmarkers=[];
@@ -215,16 +228,15 @@ for(var i=0;i<latitude.length;i++)
           if (status === 'OK') {
             if (results[0]) {
                 console.log(results[0].formatted_address+"  ----------");
-                way.push({
-                    location:results[0].formatted_address,
-                    stopover:true});
-                
-              infowindow.setContent(results[0].formatted_address);
-              //infowindow.open(map, marker);
-            } else {
+                way.push({ location:results[0].formatted_address,
+                             stopover:true});
+                infowindow.setContent(results[0].formatted_address);
+            } 
+            else {
               window.alert('No results found');
             }
-          } else {
+          }
+        else {
             window.alert('Geocoder failed due to: ' + status);
           }
         });
@@ -232,15 +244,16 @@ for(var i=0;i<latitude.length;i++)
         console.log(way);
         var wayptss=[];
 
-     // Since we are using the trial version of Distance Matrix Api api it only allows ten calls per API Key   
-		
+/************************************************************************************
+        Since we are using the trial version of Distance Matrix Api api it only allows ten calls per API Key   
+		Code used when access to the billable account is given
          /*while($row = $result->fetch_assoc())//fetch a result row as an associative array(key-value pair array) or returns false
 		 {
          //$arr[]=$row["Address"];
          $str=$str.$row["Address"]."|";
          $visited[]=0;
 		 }*/
-
+*************************************************************************************/
 
 		var wayptsss=[];
          wayptsss.push({
@@ -283,7 +296,6 @@ for(var i=0;i<latitude.length;i++)
                window.alert('Directions request failed due to ' + status);
              }
            });
-          //document.getElementById('routes') ="<h1>" + myyear + "/" + mymonth + "/" + mytoday + "</h1>"
           
 
           google.maps.event.addListener(markerCluster, 'clusterclick', function(cluster) {
@@ -341,9 +353,8 @@ for(var i=0;i<latitude.length;i++)
 </script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
-<!-- script src="https://github.com/mahnunchik/markerclustererplus/blob/master/docs/reference.html#L442"></script-->
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL2xAB85A2xzJSwpfzl9rg1bJ0mbtFeco&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdrVcu7KI3QqpQlfab1HETqxqDXVriVm0&callback=initMap">
 </script>
 
 

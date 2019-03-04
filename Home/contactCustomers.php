@@ -41,11 +41,6 @@
 				<li><a class="codrops-icon codrops-icon-drop"><span>Admin</span></a></li>
 	            <li><a href="login.html" class="codrops-icon codrops-icon-drop"><span>Log Out</span></a></li>
 			</ul>
-			<!--div class="dropdown" style="float:right;padding-right:145px;padding-top:30px">
-            <span>Mouse over me</span>
-             <div class="dropdown-content">
-            <p>Hello World!</p>
-             </div-->
 
 			<header >
 				 <button> <a href="#" style="color:black">Message</a></button>
@@ -53,11 +48,6 @@
 				  <button><a style="color:black;">ECommerce</a></button>
 					
 			 <?php
-//ini_set("SMTP", "aspmx.l.google.com");
-//ini_set("sendmail_from", "rlgayathri99@gmail.com");
-//ini_set("SMTP","mail.gmail.com");
-//ini_set("smtp_port","25");
-//ini_set('sendmail_from', 'rlgayathri99@gmail.com');
 $dburl = "localhost:3306/gaya3";
 $dbuser = "root";
 $dbpassword = "";
@@ -89,7 +79,6 @@ if ($result->num_rows > 0) {
         echo "<tr><td><input type=\"checkbox\" name=\"name1\" checked/>&nbsp;</td><td>". $row["CustomerID"]."</td>"."<td>".$row["CustomerName"]."</td>"."<td>".$row["MobileNum"]."</td>"."<td>".$row["Address"]."</td>"."<td>".$row["Email"] ."</td><tr>";
         $arr[$i]=$row["CustomerID"];
         $i++;
-        //$number=$row["phoneNum"];
     }
     echo "</table>";
     echo "<form action='Message.php' method='Post'><input style='margin-top:15px;margin-left:400px;' type='Submit' name='name' value='SendMessage'/></form>";   

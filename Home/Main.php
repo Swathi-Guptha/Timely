@@ -28,7 +28,7 @@
 								<li><a href="trip.php"class="gn-icon"><img src="Images/trip_icon.png">Trip Planning</a></li>
 								<li><a href="contactCustomers.php"class="gn-icon"><img src="Images/contact_icon.png">Contact Customers</a></li>
 								<li>
-									<a href="Resources.php" class="gn-icon "><img src="Images/resource_icon.png">Resources</a>
+									<a href="Resources.php" class="gn-icon "><img src="Images/resource icon.png">Resources</a>
 								</li>
 								<li>
 									<a href="ReadingExcelSheet.php"class="gn-icon"><img src="Images/upload_icon.png">Upload</a>

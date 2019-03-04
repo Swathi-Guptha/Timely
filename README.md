@@ -1,9 +1,3 @@
-Created by Codrops
+This README file says about how to use our app.Generally for person to open any of the links mentioned in toogle menu,they need a mysql database along with a "xampp" server in which sql connection is on.The person need internet as we are using google maps for clustering the areas of orders and showing the best and shortest route to the delivery boy.When the user clicks home it directs him to the page which shows the orders which re assigned to the delivery personnel.Contact Customer page will show the details of customers along with their emial ID and phone number so that the admin can send messages and get the availability.Upload orders link will enable the admin to upload the new orders.Resources link will sho how many resources are available i.e., the number of delivery boys and vehicles.On clicking Trip Plan you can generate the clusters and the routes which can be assigned to the delivery boys.
 
-http://www.codrops.com
-
-Integrate or build upon it for free in your personal or commercial projects. Don't republish, redistribute or sell "as-is". 
-
-Read more here: http://tympanus.net/codrops/licensing/
-
-
+ After a person logins, home page will be displayed.For the person to upload the orders he has to click Upload Orders in the toggle menu, and to see the the responses of the customers he can redirect to home page.Logout button directs him to login page.
